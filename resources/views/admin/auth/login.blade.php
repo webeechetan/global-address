@@ -53,7 +53,7 @@
         <div class="card-body">
          
           <!-- /Logo -->
-          <h4 class="mb-2 text-primary text-center">Welcome to Indeutsch 👋</h4> 
+          <h4 class="mb-2 text-primary text-center">Welcome to {{ env('APP_NAME') }} 👋</h4> 
           <form id="formAuthentication" class="mb-3" action="{{route('admin.authenticate')}}" method="POST">
             @csrf
             <div class="mb-3">
