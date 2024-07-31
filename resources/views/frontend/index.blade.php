@@ -391,7 +391,7 @@
         </div>
     </section>
 
-    <section id="Brochure my-4">
+    <section id="Brochure">
         <div class="container">
             <div class="row spacing">
                 <div class="col-lg-6 pe-lg-5">
