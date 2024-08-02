@@ -28,6 +28,7 @@ class ContactsExport implements FromCollection , WithHeadings , WithMapping
             'UTM Source',
             'UTM Type',
             'UTM Campaign',
+            'UTM Content',
             'Created At',
         ];
     }
@@ -41,8 +42,9 @@ class ContactsExport implements FromCollection , WithHeadings , WithMapping
             $contact->phone,
             $contact->city,
             $contact->utm_source,
-            $contact->utm_type,
+            $contact->utm_medium,
             $contact->utm_campaign,
+            $contact->utm_content,
             $contact->created_at,
         ];
     }

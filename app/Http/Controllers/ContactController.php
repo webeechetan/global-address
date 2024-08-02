@@ -15,6 +15,7 @@ class ContactController extends Controller
      */
     public function index()
     {
+        $this->alert('Welcome to the contact page', 'This is the contact page', 'info');
         $contacts = Contact::all();
         return view('admin.contact.index', compact('contacts')); 
     }
@@ -57,10 +58,11 @@ class ContactController extends Controller
         $contact->phone = $request->phone;
         $contact->city = $request->city;
         $contact->utm_source = $request->utm_source;
-        $contact->utm_type = $request->utm_type;
+        $contact->utm_medium = $request->utm_medium;
         $contact->utm_campaign = $request->utm_campaign;
         $contact->utm_link = $request->utm_link;
-
+        $contact->utm_content = $request->utm_content;
+        
         if($contact->save()) {
             // download sameple.pdf file
             $file = public_path()."/frontend/global_brochure.pdf";
@@ -101,9 +103,14 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Contact $contact)
     {
-        //
+        try {
+            $contact->delete();
+            return redirect()->route('admin.contact')->with('success', 'Contact deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.contact')->with('error', 'An error occurred. Please try again later.');
+        }
     }
 
     public function export(){

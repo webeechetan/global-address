@@ -12,11 +12,14 @@ class WebSiteController extends Controller
      */
     public function index(Request $request)
     {
+       //?utm_source={{source}}&utm_medium={{medium}}&utm_campaign={{Camapign Name}}&utm_content={{content}}
+
         $utm_source = $request->query('utm_source') ?? 'organic';
-        $utm_type = $request->query('utm_type') ?? 'none';
+        $utm_medium = $request->query('utm_medium') ?? 'none';
         $utm_campaign = $request->query('utm_campaign') ?? 'none';
+        $utm_content = $request->query('utm_content') ?? 'none';
         $utm_link = URL::full();
-        return view('frontend.index', compact('utm_source', 'utm_type', 'utm_campaign', 'utm_link'));
+        return view('frontend.index', compact('utm_source', 'utm_medium', 'utm_campaign', 'utm_link', 'utm_content'));
     }
 
     public function viewAboutUs()

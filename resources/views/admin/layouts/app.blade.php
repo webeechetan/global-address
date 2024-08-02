@@ -69,16 +69,6 @@
       </div>
     </div>
     <div class="layout-overlay layout-menu-toggle"></div>
-    <div>
-        <div class="bs-toast toast toast-placement-ex m-2 fade  top-0 end-0 hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-            <div class="toast-header">
-                <i class="bx bx-bell me-2"></i>
-                <div class="me-auto fw-semibold" id="toastHead"></div>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" id="toastBody"></div>
-        </div>
-      </div>
 </div>
 
   <script src="{{ asset('admin/') }}/assets/vendor/libs/jquery/jquery.js"></script>
@@ -103,23 +93,10 @@
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/tables-datatables-extensions.js"></script>
   <script src="{{ asset('admin') }}/assets/js/custom.js"></script>
-
+  
   @stack('scripts')
 
-  @if(session()->has('alert'))
-  @php
-      $alert = Session::get('alert');
-      $toastHead = $alert['msg'];
-      $toastBody = $alert['body'];
-      $toastType = $alert['type'];
-  @endphp
-  <script>
-      $(document).ready(function() {
-        alert('alert', $toastHead, $toastBody);
-          toast('{{ $toastHead }}','{{ $toastBody }}','{{ $toastType }}');
-      });
-  </script>
-@endif
+  
 <script>
 
 $(document).ready(function () {

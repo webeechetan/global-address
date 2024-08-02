@@ -39,5 +39,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/contact',[ContactController::class,'index'])->name('admin.contact');
     Route::get('/contacts/export', [ContactController::class, 'export'])->name('contacts.export');
+    Route::get('/contacts/delete/{contact}', [ContactController::class, 'destroy'])->name('contacts.delete');
 });
 

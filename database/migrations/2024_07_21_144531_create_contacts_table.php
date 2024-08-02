@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('phone');
             $table->string('city');
             $table->string('utm_source')->nullable();
-            $table->string('utm_type')->nullable();
+            $table->string('utm_medium')->nullable();
             $table->string('utm_campaign')->nullable();
             $table->mediumText('utm_link')->nullable();
+            $table->mediumText('utm_content')->nullable();
             $table->timestamps();
         });
     }
