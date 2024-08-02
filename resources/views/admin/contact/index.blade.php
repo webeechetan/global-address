@@ -10,9 +10,12 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
     <h5 class="mb-0">Contact List</h5>
+    <div class="pull-right">
+        <a href="{{ route('contacts.export') }}" class="btn btn-primary btn-sm">Export</a>
+    </div>
   </div>
           
-    <div class="table-responsive text-nowrap">
+    <div class="table-responsive text-nowrap mb-2">
         <div class="container">
             <table class="table" id="datatable">
                 <thead>
@@ -21,6 +24,9 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>City</th>
+                        <th>Utm Source</th>
+                        <th>Utm Type</th>
+                        <th>Utm Campaign</th>
                         <th>Contact Date</th>
                     </tr>
                 </thead>
@@ -32,7 +38,10 @@
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->phone }}</td>
                             <td>{{ $contact->city }}</td>
-                            <td>{{ $contact->created_at->format('d-M-y') }}</td>
+                            <td>{{ $contact->utm_source }}</td>
+                            <td>{{ $contact->utm_type }}</td>
+                            <td>{{ $contact->utm_campaign }}</td>
+                            <td>{{ $contact->created_at }}</td>
                         </tr>
                     @endforeach
                 </tbody>

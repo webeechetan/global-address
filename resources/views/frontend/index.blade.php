@@ -428,6 +428,10 @@
                     <div class="form-box" id="main_form">
                         <form id="contact-form" class="form my-2 contact-form" method="POST" action="{{ route('contactUs') }}">
                             @csrf
+                            <input type="hidden" name="utm_source" value="{{ $utm_source }}" >
+                            <input type="hidden" name="utm_type" value="{{ $utm_type }}" >
+                            <input type="hidden" name="utm_campaign" value="{{ $utm_campaign }}" >
+                            <input type="hidden" name="utm_link" value="{{ $utm_link }}" >
                             <div class="row gy-4 justify-content-between align-items-center">
                                 <div class="col-12">
                                     <div class="">
@@ -544,6 +548,11 @@
                     <div class="form-box" id="main_form">
                         <form id="contact-form-modal" class="form my-2 contact-form" method="POST" action="{{ route('contactUs') }}">
                             @csrf
+                            <input type="hidden" name="utm_source" value="{{ $utm_source }}" >
+                            <input type="hidden" name="utm_type" value="{{ $utm_type }}" >
+                            <input type="hidden" name="utm_campaign" value="{{ $utm_campaign }}" >
+                            <input type="hidden" name="utm_link" value="{{ $utm_link }}" >
+
                             <div class="row gy-4 justify-content-between align-items-center">
                                 <div class="col-12">
                                     <div class="">

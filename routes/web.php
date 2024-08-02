@@ -38,5 +38,6 @@ Route::get('admin/logout', [AuthController::class, 'logout'])->name('admin.logou
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/contact',[ContactController::class,'index'])->name('admin.contact');
+    Route::get('/contacts/export', [ContactController::class, 'export'])->name('contacts.export');
 });
 

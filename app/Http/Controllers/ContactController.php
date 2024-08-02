@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Exports\ContactsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ContactController extends Controller
@@ -54,6 +56,10 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->phone = $request->phone;
         $contact->city = $request->city;
+        $contact->utm_source = $request->utm_source;
+        $contact->utm_type = $request->utm_type;
+        $contact->utm_campaign = $request->utm_campaign;
+        $contact->utm_link = $request->utm_link;
 
         if($contact->save()) {
             // download sameple.pdf file
@@ -98,6 +104,10 @@ class ContactController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function export(){
+        return Excel::download(new ContactsExport, 'contacts.xlsx');
     }
 
 }

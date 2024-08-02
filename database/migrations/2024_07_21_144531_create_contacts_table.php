@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('city');
+            $table->string('utm_source')->nullable();
+            $table->string('utm_type')->nullable();
+            $table->string('utm_campaign')->nullable();
+            $table->mediumText('utm_link')->nullable();
             $table->timestamps();
         });
     }
