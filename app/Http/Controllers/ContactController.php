@@ -69,7 +69,6 @@ class ContactController extends Controller
             $headers = array(
                 'Content-Type: application/pdf',
             );
-            session()->flash('success', 'Your message has been sent successfully.');
             return response()->download($file, 'global_brochure.pdf', $headers);
         }
         return redirect()->route('viewIndex')->with('error', 'An error occurred. Please try again later.');
