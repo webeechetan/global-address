@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <meta name="description" content="Discover high-yield real estate investments in Dubai with up to 16.2% ROI. Invest in luxury apartments and prime locations for extraordinary growth with us."/>
-    <title>Dubai Real Estate Investment with 4x Growth & 16.2% ROI | The Global Address</title>
+    <title>The Global Address</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!--<link rel="icon" type="image/x-icon" href="{{ asset('') }}favicon.png">-->
-    <link rel="icon" type="image/x-icon" href="https://cdn.prod.website-files.com/6065cc6d72ae8a1ba7a8cd95/6066cd0273adcb57fd1b6e4b_favicon.png">
+
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -18,14 +16,6 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TFCRR2T8');</script>
-    <!-- End Google Tag Manager -->
-
 </head>
 
 <body>
@@ -61,7 +51,7 @@
                         <h1 data-aos="fade-right" data-aos-duration="1500">THE SECRET TO <span>4x Investment Growth</span> </h1>
                         <p class="w-mob-280" data-aos="fade-right" data-aos-duration="2000">Discover Investment Opportunities in the Most Premier Projects with <span class="fw-bold">up to 16.2% ROI</span> </p>
                         
-                        <div data-aos="fade-right" data-aos-duration="2500"><a href="#main_form" class="primary-btn mt-3 mob-visible ">Download the Brochure</a></div>
+                        <div data-aos="fade-right" data-aos-duration="2500"><a href="#main_form" class="primary-btn mt-3">Download the Brochure</a></div>
 
                     </div>
                 </div>
@@ -69,10 +59,6 @@
 
         </div>
     </div>
-     <div class="container">
-
-         <div data-aos="fade-right" data-aos-duration="2500"><a href="#main_form" class="primary-btn mt-3 lg-visible ">Download the Brochure</a></div>
-     </div>
 
     <section id="strategy" class="overflow-hidden">
         <img src="{{ asset('frontend') }}/Images/left-side.png" data-aos="fade-right" data-aos-duration="1500" class="left-side img-fluid d-xl-block d-none">
@@ -129,7 +115,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <a href="#main_form" class="primary-btn">Learn More</a>
+                <a href="#main_form" class="primary-btn">Explore Properties</a>
             </div>
         </div>
 
@@ -283,7 +269,7 @@
         </div>
         <div class="container  ">
             <div class="d-flex justify-content-center align-items-center">
-                <a href="#main_form" class="primary-btn">Download your Guide Now</a>
+                <a href="#main_form" class="primary-btn">Explore Properties</a>
             </div>
         </div>
 
@@ -333,11 +319,8 @@
                 </div>
             </div>
 
-            <div class="text-center ">
-                <div class="startbtn d-inline-block">
-                    <a href="#main_form" class="">Start Your Investment Journey Now</a>
-
-                </div>
+            <div class="text-center">
+                <a href="#main_form" class="startbtn">Start Your Investment Journey Now</a>
             </div>
         </div>
     </section>
@@ -390,7 +373,8 @@
                                         <img src="{{ asset('frontend') }}/Images/SVG.png" width="40" class="img-fluid">
                                     </div>
                                     <div>
-                                        <p class="text-start">Choosing to invest in Dubai's real estate has been incredibly rewarding. The returns exceeded my expectations, and the entire experience was smooth and efficient. Definitely recommend this process with The Global Address!
+                                        <p class="text-start">The investment opportunities in Dubai are unmatched. My property in Dubai Hills
+                                            Estate has appreciated significantly with an impressive return on investment.
                                         </p>
                                     </div>
                                     <img src="{{ asset('frontend') }}/Images/testimonial2.png" class="user_property">
@@ -465,7 +449,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="text-start my-lg-4 my-3 ">
+                                <div class="text-center my-lg-4 my-2 ">
                                     <button type="submit" class="primary-btn submit-btn">Download Now</button>
                                 </div>
                             </div>
@@ -518,102 +502,15 @@
             </div>
         </div>
     </footer>
-    
-      <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="toast-msg" class="toast bg-primary text-white" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-warning text-dark">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-               Form Submitted Successfully.
-            </div>
-        </div>
-    </div>
-    
-
-    <!-- Modal  -->
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Fill out the following details to recieve a FREE copy of  our brochure </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" fdprocessedid="qfnd96"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-box" id="main_form">
-                        <form id="contact-form-modal" class="form my-2 contact-form" method="POST" action="{{ route('contactUs') }}">
-                            @csrf
-                            <div class="row gy-4 justify-content-between align-items-center">
-                                <div class="col-12">
-                                    <div class="">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input required name="name" type="text" id="name" class="form-control" tabindex="1" placeholder="" value="{{ old('name') }}">
-                                        @error('name')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div>
-                                        <label for="email" class="form-label">Email</label>
-                                        <input required type="email" name="email" id="email" class="form-control" placeholder="" value="{{ old('email') }}">
-                                        @error('email')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div>
-                                        <label for="phone" class="form-label">Phone Number</label>
-                                        <input required min="7" max="12" type="text" name="phone" id="phone" class="form-control" placeholder="" value="{{ old('phone') }}">
-                                        @error('phone')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="city" class="form-label">City</label>
-                                    <input required type="text" name="city" id="city" class="form-control" placeholder="" value="{{ old('city') }}">
-                                    @error('city')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="text-start my-lg-4 my-3 ">
-                                    <button type="submit" class="primary-btn submit-btn">Download Now</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFCRR2T8"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
         document.getElementById("contact-form").addEventListener("submit", function() {
             setTimeout(function() {
-                document.getElementById("contact-form").reset(); 
-                $('#toast-msg').toast('show');
-            }, 500); 
-        });
-        
-         document.getElementById("contact-form-modal").addEventListener("submit", function() {
-            setTimeout(function() {
-                document.getElementById("contact-form-modal").reset();
-                $('#myModal').modal('hide');
-                $('#toast-msg').toast('show');
+                document.getElementById("contact-form").reset();
             }, 500); 
         });
 
@@ -626,7 +523,7 @@
             function onScroll() {
                 const currentScrollY = window.scrollY;
 
-                if (currentScrollY > 120) {
+                if (currentScrollY > 400) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
@@ -678,14 +575,6 @@
         document.querySelector('.arrowprev').addEventListener('click', function() {
             swiper.slidePrev();
         });
-    </script>
-     <script>
-        window.onload = function() {
-            setTimeout(function() {
-                $('#myModal').modal('show');
-            }, 3000);
-        };
-        
     </script>
 </body>
 

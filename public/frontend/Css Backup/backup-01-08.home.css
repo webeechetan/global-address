@@ -29,9 +29,8 @@
     --fw-500: 500;
     --primary-font-family: "Montserrat", sans-serif;
     --secondary-font-family: "Roboto", sans-serif;
-    --btn-padding: 16px 37px;
     --line-height: 1.5em;
-    
+    --btn-padding: 13px 37px;
 }
 
 body {
@@ -102,7 +101,7 @@ a {
 
 .hero-content {
     background-image: url("./Images/bg-img.webp");
-    height: 900px;
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -182,10 +181,8 @@ a {
     border-radius: var(--btn-radius);
     padding: var(--btn-padding);
     display: inline-block;
-    font-size: 20px;
+    font-size: 18px;
     transition: all 0.4s ease;
-    font-weight: 00;
-    border: none;
 }
 
 .primary-btn:hover {
@@ -198,9 +195,8 @@ a {
     display: inline-block;
     color: var(--light);
     border: 1px solid var(--light);
-    padding: 12px 40px;
+    padding: 9px 40px;
     transition: all 0.3s ease-in;
-    font-size: 18px;
 }
 
 .header-right .downloadbtn:hover {
@@ -250,16 +246,7 @@ a {
 
 
 }
-.modal-content .form-control{
-    padding-block: 14px !important;
-}
-.modal-content{
-    padding: 10px;
-}
 
-.btn-close:focus{
-box-shadow: none;
-}
 #strategy .title,
 #Apartments .title,
 #testimonial .title {
@@ -561,35 +548,24 @@ box-shadow: none;
 
 .startbtn {
     text-decoration: none;
-    color: var(--dark) !important;
+    color: var(--dark);
     border: 1px solid var(--light);
     background-color: var(--light);
     border-radius: var(--radius);
     text-align: center;
-    padding: 17px 30px;
+    padding: 15px 30px;
     margin-top: 10px;
     transition: all 0.3s ease-in;
     border-radius: var(--btn-radius);
     font-weight: 500;
-    border: none;
 
-}
-.startbtn a{
-    color: var(--dark);
-    font-size: 18px !important;
-    font-weight: 600 !important;
-    text-align: center;
-    transition: all 0.3s ease-in;
 }
 
 .startbtn:hover {
     background-color: var(--dark);
-    color: var(--light) !important;
+    color: var(--light);
     border: none;
     outline: none;
-}
-.startbtn:hover a{
-color: var(--white);
 }
 
 .brochure-content h5 {
@@ -610,7 +586,6 @@ color: var(--white);
 .form-label {
     color: #000;
     font-weight: 500;
-    margin-left: 15px;
 }
 
 .form-control,
@@ -684,11 +659,11 @@ footer .footer-col-1 p {
 /* Responsive */
 @media only screen and (max-width:1024px) {
     .logo {
-        max-width: 190px;
+        max-width: 200px;
     }
 
     .whatsappno img {
-        max-width: 25px;
+        max-width: 28px;
     }
 
     #strategy,
@@ -764,40 +739,6 @@ footer .footer-col-1 p {
     }
 }
 
-@media (max-width:480px){
-    .primary-btn{
-        margin-top: 35px !important;
-        font-size: 19px !important;
-        padding: 15px 10px !important;
-        width: 100%;
-        text-align: center;
-    }
-    .form-control, .form-select, .form-control:focus, .form-select:focus{
-        padding-block: 17px !important;
-    }
-    .mob-visible{
-        display: none;
-    }
-}
-@media (min-width:481px){
-    .primary-btn{
-        .primary-btn{
-            font-size: 15px;
-            padding: 14px 30px;
-            border: none;
-        }
-    }
-    .form-control, .form-select, .form-control:focus, .form-select:focus{
-        padding-block: 17px !important;
-    }
-    .mob-visible{
-        display: inline-block;
-    }
-    .lg-visible{
-        display: none;
-    }
-}
-
 @media (max-width: 767px) {
     .box img {
         margin: auto;
@@ -805,22 +746,13 @@ footer .footer-col-1 p {
     .title p {
         font-size: 18px;
     }
-    .brochure-content h5{
-
-        text-align: center;
-    }
-    .brochure-box{
-        text-align: center;
-    }
-      
 
     .hero-content {
         background-position: 55%;
     }
     .primary-btn{
-        font-size: 15px;
-        padding: 13px 30px;
-        border: none;
+        font-size: 14px;
+        padding: 10px 30px;
     }
     .box .box-title{
         font-size: 23px;
@@ -830,7 +762,7 @@ footer .footer-col-1 p {
         font-size: 18px;
     }
     .step-text{
-        font-size: 16px;
+        font-size: 17px;
     } 
     .brochure-content h5 {
         font-size:18px;
@@ -848,9 +780,8 @@ footer .footer-col-1 p {
 
 @media (max-width: 575px) {
     .startbtn {
-        padding: 17px 23px;
-        font-size: 13px;
-        font-weight: 600;
+        padding: 10px 20px;
+        font-size: 14px;
     }
     p {
         font-size: 14px;

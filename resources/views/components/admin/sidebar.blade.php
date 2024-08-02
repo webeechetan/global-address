@@ -14,83 +14,10 @@
 
      <!-- Apps & Pages -->
     
-    <li class="menu-item">
+    <li class="menu-item active">
       <a href="{{route('admin.dashboard') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
-      </a>
-    </li>
-
-    <!-- Category -->
-    {{-- <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-collection"></i>
-       
-        <div class="text-truncate" data-i18n="Category">Category</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item active">
-          <a href="{{ route('admin.category.index') }}" class="menu-link">
-            <div class="text-truncate" data-i18n="All Category">All Category</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="{{ route('admin.category.create') }}" class="menu-link">
-            <div class="text-truncate" data-i18n="New Category">New Category</div>
-          </a>
-        </li>
-       
-      </ul>
-    </li> --}}
-
-     <!-- Category -->
-    {{-- <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-collection"></i>
-        
-        <div class="text-truncate" data-i18n="Sub-Category">Sub-Category</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item active">
-          <a href="{{route('subcategory.index')}}" class="menu-link">
-            <div class="text-truncate" data-i18n="Sub-Category">Sub-Category</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="{{route('subcategory.create')}}" class="menu-link">
-            <div class="text-truncate" data-i18n="New SubCategory">New SubCategory</div>
-          </a>
-        </li>
-        
-      </ul>
-    </li> --}}
-   
-       <!-- Product -->
-    {{-- <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-collection"></i>
-        
-        <div class="text-truncate" data-i18n="Product">Products</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item active">
-          <a href="{{route('product.index')}}" class="menu-link">
-            <div class="text-truncate" data-i18n="Product List">Product List</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="{{route('product.create')}}" class="menu-link">
-            <div class="text-truncate" data-i18n="New Product">New Product</div>
-          </a>
-        </li>
-        
-      </ul>
-    </li> --}}
-
-    <li class="menu-item">
-      <a href="{{route('admin.contact')}}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-message-rounded-dots"></i>
-        <div class="text-truncate" data-i18n="Contact">Contacts Us</div>
+        <div class="text-truncate" data-i18n="Contacts">Contacts</div>
       </a>
     </li>
      

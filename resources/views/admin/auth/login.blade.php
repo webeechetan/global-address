@@ -8,11 +8,8 @@
 
     <title>Admin Login</title>
 
-    
-    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
-    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="https://www.acma.in/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="https://cdn.prod.website-files.com/6065cc6d72ae8a1ba7a8cd95/6066cd0273adcb57fd1b6e4b_favicon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -58,7 +55,7 @@
             @csrf
             <div class="mb-3">
               <label for="email" class="form-label">Email </label>
-              <input type="text" class="form-control" id="email" name="email" value="admin@gmail.com" placeholder="Enter your email or username" autofocus>
+              <input type="text" class="form-control" id="email" name="email" value="" placeholder="Enter your email or username" autofocus>
               @error('email')    
                 <span class="text-danger">{{ $message }}</span>
               @enderror
@@ -68,7 +65,7 @@
                 <label class="form-label" for="password">Password</label>
               </div>
               <div class="input-group input-group-merge">
-                <input type="password" id="password" class="form-control" value="123456" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                <input type="password" id="password" class="form-control" value="" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
               </div>
               @error('password')    

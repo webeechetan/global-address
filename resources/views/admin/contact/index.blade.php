@@ -21,6 +21,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>City</th>
+                        <th>Contact Date</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -31,6 +32,7 @@
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->phone }}</td>
                             <td>{{ $contact->city }}</td>
+                            <td>{{ $contact->created_at->format('d-M-y') }}</td>
                         </tr>
                     @endforeach
                 </tbody>
