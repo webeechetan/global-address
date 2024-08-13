@@ -627,13 +627,11 @@
         $(document).ready(function() {
             $(".form-email").keyup(function() {
                 var email = $(this).val();
-                var phone = $(".form-phone").val();
                 checkEmail(email);
-                checkPhone(phone);
-               
             });
 
             function checkEmail(email){
+                let phone = $(".form-phone").val();
                 $.post("{{ route('check-email') }}", {
                     email: email,
                     _token: "{{ csrf_token() }}"
@@ -644,17 +642,20 @@
                         $(".email-unique-error").text(data.message);
                         $(".submit-btn").attr('disabled', true);
                         $(".submit-btn").removeClass('primary-btn');
-                        $(".submit-btn").addClass('primary-btn-diabled');
+                        $(".submit-btn").addClass('primary-btn-disabled');
                     } else {
                         $(".email-unique-error").addClass('d-none');
                         $(".submit-btn").attr('disabled', false);
-                        $(".submit-btn").removeClass('primary-btn-diabled');
+                        $(".submit-btn").removeClass('primary-btn-disabled');
                         $(".submit-btn").addClass('primary-btn');
+                        let phone = $(".form-phone").val();
+                        checkPhone(phone);
                     }
                 });
             }
 
             function checkPhone(phone){
+
                 $.post("{{ route('check-phone') }}", {
                     phone: phone,
                     _token: "{{ csrf_token() }}"
@@ -665,23 +666,21 @@
                         $(".phone-unique-error").text(data.message);
                         $(".submit-btn").attr('disabled', true);
                         $(".submit-btn").removeClass('primary-btn');
-                        $(".submit-btn").addClass('primary-btn-diabled');
-                        
+                        $(".submit-btn").addClass('primary-btn-disabled');
                     } else {
                         $(".phone-unique-error").addClass('d-none');
                         $(".submit-btn").attr('disabled', false);
-                        $(".submit-btn").removeClass('primary-btn-diabled');
+                        $(".submit-btn").removeClass('primary-btn-disabled');
                         $(".submit-btn").addClass('primary-btn');
-
+                        let email = $(".form-email").val();
+                        checkEmail(email);
                     }
                 });
             }
 
             $(".form-phone").keyup(function() {
                 var phone = $(this).val();
-                var email = $(".form-email").val();
                 checkPhone(phone);
-                checkEmail(email);
             });
 
 

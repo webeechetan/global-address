@@ -193,7 +193,7 @@ a {
     color: var(--light);
 }
 
-.primary-btn-diabled {
+.primary-btn-disabled {
     background-color: #b2ab98;
     color: var(--dark);
     font-weight: var(--fw-500);
