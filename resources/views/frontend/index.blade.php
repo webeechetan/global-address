@@ -448,19 +448,21 @@
                                 <div class="col-12">
                                     <div>
                                         <label for="email" class="form-label">Email</label>
-                                        <input required type="email" name="email" id="email" class="form-control" placeholder="" value="{{ old('email') }}">
+                                        <input required type="email" name="email" id="email" class="form-control form-email" placeholder="" value="{{ old('email') }}">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        <span class="email-unique-error d-none text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div>
                                         <label for="phone" class="form-label">Phone Number</label>
-                                        <input required min="7" max="12"  type="text" name="phone" id="phone" class="form-control" placeholder="" value="{{ old('phone') }}">
+                                        <input required min="7" max="12"  type="text" name="phone" id="phone" class="form-control form-phone" placeholder="" value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        <span class="phone-unique-error d-none text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -471,7 +473,7 @@
                                     @enderror
                                 </div>
                                 <div class="text-start my-lg-4 my-3 ">
-                                    <button type="submit" class="primary-btn submit-btn">Download Now</button>
+                                    <button type="submit" class="primary-btn submit-btn " disabled>Download Now</button>
                                 </div>
                             </div>
                         </form>
@@ -537,69 +539,7 @@
     </div>
     
 
-    <!-- Modal  -->
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Fill out the following details to recieve a FREE copy of  our brochure </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" fdprocessedid="qfnd96"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-box" id="main_form">
-                        <form id="contact-form-modal" class="form my-2 contact-form" method="POST" action="{{ route('contactUs') }}">
-                            @csrf
-                            <input type="hidden" name="utm_source" value="{{ $utm_source }}" >
-                            <input type="hidden" name="utm_medium" value="{{ $utm_medium }}" >
-                            <input type="hidden" name="utm_campaign" value="{{ $utm_campaign }}" >
-                            <input type="hidden" name="utm_link" value="{{ $utm_link }}" >
-                            <input type="hidden" name="utm_content" value="{{ $utm_content }}" >
-
-                            <div class="row gy-4 justify-content-between align-items-center">
-                                <div class="col-12">
-                                    <div class="">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input required name="name" type="text" id="name" class="form-control" tabindex="1" placeholder="" value="{{ old('name') }}">
-                                        @error('name')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div>
-                                        <label for="email" class="form-label">Email</label>
-                                        <input required type="email" name="email" id="email" class="form-control" placeholder="" value="{{ old('email') }}">
-                                        @error('email')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div>
-                                        <label for="phone" class="form-label">Phone Number</label>
-                                        <input required min="7" max="12" type="text" name="phone" id="phone" class="form-control" placeholder="" value="{{ old('phone') }}">
-                                        @error('phone')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="city" class="form-label">City</label>
-                                    <input required type="text" name="city" id="city" class="form-control" placeholder="" value="{{ old('city') }}">
-                                    @error('city')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="text-start my-lg-4 my-3 ">
-                                    <button type="submit" class="primary-btn submit-btn">Download Now</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFCRR2T8"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -620,14 +560,6 @@
             }, 500); 
         });
         
-         document.getElementById("contact-form-modal").addEventListener("submit", function() {
-            setTimeout(function() {
-                document.getElementById("contact-form-modal").reset();
-                $('#myModal').modal('hide');
-                $('#toast-msg').toast('show');
-            }, 500); 
-        });
-
         AOS.init();
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('.header-top');
@@ -691,11 +623,51 @@
         });
     </script>
      <script>
-        window.onload = function() {
-            setTimeout(function() {
-                $('#myModal').modal('show');
-            }, 3000);
-        };
+
+        $(document).ready(function() {
+            $(".form-email").keyup(function() {
+                var email = $(this).val();
+                $.post("{{ route('check-email') }}", {
+                    email: email,
+                    _token: "{{ csrf_token() }}"
+                }, function(data) {
+                    console.log(data);
+                    if (data.status == 'true') {
+                        $(".email-unique-error").removeClass('d-none');
+                        $(".email-unique-error").text(data.message);
+                        $(".submit-btn").attr('disabled', true);
+                        $(".submit-btn").removeClass('primary-btn');
+                        $(".submit-btn").addClass('primary-btn-diabled');
+                    } else {
+                        $(".email-unique-error").addClass('d-none');
+                        $(".submit-btn").attr('disabled', false);
+                        $(".submit-btn").removeClass('primary-btn-diabled');
+                        $(".submit-btn").addClass('primary-btn');
+                    }
+                });
+            });
+
+            $(".form-phone").keyup(function() {
+                var phone = $(this).val();
+                $.post("{{ route('check-phone') }}", {
+                    phone: phone,
+                    _token: "{{ csrf_token() }}"
+                }, function(data) {
+                    console.log(data);
+                    if (data.status == 'true') {
+                        $(".phone-unique-error").removeClass('d-none');
+                        $(".phone-unique-error").text(data.message);
+                        $(".submit-btn").attr('disabled', true);
+                        
+                    } else {
+                        $(".phone-unique-error").addClass('d-none');
+                        $(".submit-btn").attr('disabled', false);
+                    }
+                });
+            });
+
+
+        });
         
     </script>
 </body>

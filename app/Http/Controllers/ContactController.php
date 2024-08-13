@@ -35,8 +35,8 @@ class ContactController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits_between:7,12',
+            'email' => 'required|email|unique:contacts',
+            'phone' => 'required|digits_between:7,12|unique:contacts',
             'city' => 'required',
         ];
 
@@ -46,6 +46,8 @@ class ContactController extends Controller
             'email.email' => 'The email address must be a valid email format.',
             'phone.required' => 'Please enter your phone number.',
             'phone.digits_between' => 'Phone number must be between 7 and 12 digits.',
+            'email.unique' => 'The email address is already registered.',
+            'phone.unique' => 'The phone number is already registered.',
         ];
 
         // Validate the request
@@ -73,6 +75,24 @@ class ContactController extends Controller
         }
         return redirect()->route('viewIndex')->with('error', 'An error occurred. Please try again later.');
      
+    }
+
+    public function checkEmail(Request $request){
+        $email = $request->email;
+        $contact = Contact::where('email', $email)->first();
+        if($contact){
+            return response()->json(['status' => 'true', 'message' => 'The email address is already registered.']);
+        }
+        return response()->json(['status' => 'false', 'message' => 'The email address is available.']);
+    }
+
+    public function checkPhone(Request $request){
+        $phone = $request->phone;
+        $contact = Contact::where('phone', $phone)->first();
+        if($contact){
+            return response()->json(['status' => 'true', 'message' => 'The phone number is already registered.']);
+        }
+        return response()->json(['status' => 'false', 'message' => 'The phone number is available.']);
     }
 
     /**

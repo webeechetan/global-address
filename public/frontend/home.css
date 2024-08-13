@@ -193,6 +193,19 @@ a {
     color: var(--light);
 }
 
+.primary-btn-diabled {
+    background-color: #b2ab98;
+    color: var(--dark);
+    font-weight: var(--fw-500);
+    border-radius: var(--btn-radius);
+    padding: var(--btn-padding);
+    display: inline-block;
+    font-size: 20px;
+    transition: all 0.4s ease;
+    font-weight: 00;
+    border: none;
+}
+
 .header-right .downloadbtn {
     border-radius: var(--contact-btn-radius);
     display: inline-block;
