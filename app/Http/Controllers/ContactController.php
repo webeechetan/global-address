@@ -36,7 +36,7 @@ class ContactController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required|email|unique:contacts',
-            'phone' => 'required|digits_between:7,12|unique:contacts',
+            'phone' => 'required|digits:10|numeric|unique:contacts',
             'city' => 'required',
         ];
 
@@ -45,7 +45,8 @@ class ContactController extends Controller
             'email.required' => 'Please enter your email address.',
             'email.email' => 'The email address must be a valid email format.',
             'phone.required' => 'Please enter your phone number.',
-            'phone.digits_between' => 'Phone number must be between 7 and 12 digits.',
+            'phone.min' => 'Phone number must be between 7 and 12 digits.',
+            'phone.max' => 'Phone number must be between 7 and 12 digits.',
             'email.unique' => 'The email address is already registered.',
             'phone.unique' => 'The phone number is already registered.',
         ];
