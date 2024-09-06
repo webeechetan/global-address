@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use App\Models\Country;
+use App\Models\State;
+use App\Models\City;
 
 class WebSiteController extends Controller
 {
@@ -14,12 +17,16 @@ class WebSiteController extends Controller
     {
        //?utm_source={{source}}&utm_medium={{medium}}&utm_campaign={{Camapign Name}}&utm_content={{content}}
 
+        $country = Country::first();
+        $states = State::where('country_id', $country->id)->get();
+       
+
         $utm_source = $request->query('utm_source') ?? 'organic';
         $utm_medium = $request->query('utm_medium') ?? 'none';
         $utm_campaign = $request->query('utm_campaign') ?? 'none';
         $utm_content = $request->query('utm_content') ?? 'none';
         $utm_link = URL::full();
-        return view('frontend.index', compact('utm_source', 'utm_medium', 'utm_campaign', 'utm_link', 'utm_content'));
+        return view('frontend.index', compact('utm_source', 'utm_medium', 'utm_campaign', 'utm_link', 'utm_content','states'));
     }
 
     public function viewAboutUs()
@@ -91,4 +98,5 @@ class WebSiteController extends Controller
     {
         //
     }
+
 }

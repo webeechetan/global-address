@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->string('state');
             $table->string('city');
             $table->string('utm_source')->nullable();
             $table->string('utm_medium')->nullable();

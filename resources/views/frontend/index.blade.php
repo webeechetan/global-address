@@ -15,6 +15,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/home.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -27,9 +29,19 @@
     <!-- End Google Tag Manager -->
 
 </head>
+<style>
+    .text-danger {
+        color: red; /* or your error color */
+    }
+</style>
 
 <body>
     <!-- Header -->
+
+   
+
+
+
     <header class="header-top">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
@@ -50,8 +62,7 @@
 
         </div>
 
-    </header>
-
+    </header>    
     <div id="hero-section" class="bg-primary">
         <div class="hero-content">
             <div class="container">
@@ -381,7 +392,7 @@
                                 <div class="d-flex flex-column gap-2 testimonial">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <div class="d-flex justify-content-between align-items-center gap-3">
-                                            <img src="{{ asset('frontend') }}/Images/user2.png" class="img-fluid align-self-center" alt="img">
+                                            <img src="{{ asset('frontend') }}/Images/user3.png" class="img-fluid align-self-center" alt="img">
                                             <div class="d-flex flex-column align-items-start gap-1">
                                                 <p class="fw-bold mb-0">Nisha Roy</p>
                                                 <p class="mb-0">Delhi</p>
@@ -458,22 +469,67 @@
                                 <div class="col-12">
                                     <div>
                                         <label for="phone" class="form-label">Phone Number</label>
-                                        <input required min="7" max="12"  type="text" name="phone" id="phone" class="form-control form-phone" placeholder="" value="{{ old('phone') }}">
+                                        <input required  type="text" name="phone" id="phone" class="form-control form-phone" placeholder="+91 9999-9999-99" value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <span class="phone-unique-error d-none text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <label for="city" class="form-label">City</label>
                                     <input required type="text" name="city" id="city" class="form-control" placeholder="" value="{{ old('city') }}">
                                     @error('city')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div> --}}
+
+                                <div class="col-12">
+                                    <label for="state" class="form-label">State</label>
+                                    <select required name="state" id="state" class="form-control" onchange="updateCities(this.value)">
+                                        <option value="" disabled {{ old('state') ? '' : 'selected' }}>Select your State</option>
+                                        @foreach($states as $state)
+                                            {{-- <option value="{{$state->id}}"> --}}
+                                            <option value="{{ $state->id }}" {{ old('state') == $state->id ? 'selected' : '' }}>
+                                                {{$state->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    
+                                    @error('state')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
+                        
+                                <div class="col-12">
+                                    <label for="city" class="form-label">City</label>
+
+                                    <select required name="city" id="city" class="form-control">
+                                        <option value="">Select City</option>
+                                        <!-- Cities will be populated here dynamically -->
+                                        @if(old('state'))
+
+                                        @php
+                                            $selectedStateId = old('state');
+                                            $cities = $selectedStateId ? \App\Models\City::where('state_id', $selectedStateId)->get() : [];
+                                        @endphp
+                                        
+                                        @foreach($cities as $city)
+                                            <option value="{{ $city->name }}" {{ old('city') == $city->name ? 'selected' : '' }}>
+                                                {{ $city->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+
+                                    </select>
+                                    @error('city')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="text-start my-lg-4 my-3 ">
-                                    <button type="submit" class="primary-btn submit-btn " disabled>Download Now</button>
+                                    {{-- <button type="submit" class="primary-btn submit-btn " disabled>Download Now</button> --}}
+                                    <button type="submit" class="primary-btn submit-btn">Download Now</button>
                                 </div>
                             </div>
                         </form>
@@ -526,6 +582,7 @@
         </div>
     </footer>
     
+    
       <div class="toast-container position-fixed top-0 end-0 p-3">
         <div id="toast-msg" class="toast bg-primary text-white" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-warning text-dark">
@@ -533,10 +590,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-               Form Submitted Successfully.
+               You will receive the brochore via email.
             </div>
         </div>
     </div>
+    
     
 
    
@@ -549,17 +607,64 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+
+ 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script> 
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <script>
+
+        @if(session('success'))
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: 'right',
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+
+        @endif
+
+          function updateCities(stateId) {
+
+            if (!stateId) return;
+            $('#city').html('<option value="">Select a city</option>');
+                
+                $.ajax({
+                    url: '/get-cities/' + stateId,
+                    type: 'GET',
+                    success: function(response) {
+                        $.each(response.cities, function(index, city) {
+                            $('#city').append('<option value="' + city.name + '">' + city.name + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.error('Error fetching city:', error);
+                    }
+                });
+            }
+    
+        $(document).ready(function() {
+            $("#phone").inputmask({
+                mask: "9999999999",
+                // placeholder: " "
+            });
+            
+        });
+
         document.getElementById("contact-form").addEventListener("submit", function() {
+            e.preventDefault(); // Prevent the default form submission
             setTimeout(function() {
                 document.getElementById("contact-form").reset(); 
                 $('#toast-msg').toast('show');
             }, 500); 
         });
         
+        //compenging blow
         AOS.init();
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('.header-top');
@@ -622,71 +727,88 @@
             swiper.slidePrev();
         });
     </script>
+
+    {{-- //compenging below --}}
+
+    @if ($errors->any())
      <script>
 
         $(document).ready(function() {
-            $(".form-email").keyup(function() {
-                var email = $(this).val();
-                checkEmail(email);
+            // $(".form-email").keyup(function() {
+            //     var email = $(this).val();
+            //     checkEmail(email);
+            // });
+
+            // function checkEmail(email){
+            //     let phone = $(".form-phone").val();
+            //     $.post("{{ route('check-email') }}", {
+            //         email: email,
+            //         _token: "{{ csrf_token() }}"
+            //     }, function(data) {
+            //         console.log(data);
+            //         if (data.status == 'true') {
+            //             $(".email-unique-error").removeClass('d-none');
+            //             $(".email-unique-error").text(data.message);
+            //             $(".submit-btn").attr('disabled', true);
+            //             $(".submit-btn").removeClass('primary-btn');
+            //             $(".submit-btn").addClass('primary-btn-disabled');
+            //         } else {
+            //             $(".email-unique-error").addClass('d-none');
+            //             $(".submit-btn").attr('disabled', false);
+            //             $(".submit-btn").removeClass('primary-btn-disabled');
+            //             $(".submit-btn").addClass('primary-btn');
+            //             let phone = $(".form-phone").val();
+            //             checkPhone(phone);
+            //         }
+            //     });
+            // }
+
+            // function checkPhone(phone){
+
+            //     $.post("{{ route('check-phone') }}", {
+            //         phone: phone,
+            //         _token: "{{ csrf_token() }}"
+            //     }, function(data) {
+            //         console.log(data);
+            //         if (data.status == 'true') {
+            //             $(".phone-unique-error").removeClass('d-none');
+            //             $(".phone-unique-error").text(data.message);
+            //             $(".submit-btn").attr('disabled', true);
+            //             $(".submit-btn").removeClass('primary-btn');
+            //             $(".submit-btn").addClass('primary-btn-disabled');
+            //         } else {
+            //             $(".phone-unique-error").addClass('d-none');
+            //             $(".submit-btn").attr('disabled', false);
+            //             $(".submit-btn").removeClass('primary-btn-disabled');
+            //             $(".submit-btn").addClass('primary-btn');
+            //             let email = $(".form-email").val();
+            //             checkEmail(email);
+            //         }
+            //     });
+            // }
+
+            // $(".form-phone").keyup(function() {
+            //     var phone = $(this).val();
+            //     checkPhone(phone);
+            // });
+
+           
+            window.addEventListener('load', function() {
+            // Check if there is any element with the class 'text-danger'
+            if (document.querySelector('.text-danger')) {
+                // Scroll to the form
+                document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
+            }
             });
 
-            function checkEmail(email){
-                let phone = $(".form-phone").val();
-                $.post("{{ route('check-email') }}", {
-                    email: email,
-                    _token: "{{ csrf_token() }}"
-                }, function(data) {
-                    console.log(data);
-                    if (data.status == 'true') {
-                        $(".email-unique-error").removeClass('d-none');
-                        $(".email-unique-error").text(data.message);
-                        $(".submit-btn").attr('disabled', true);
-                        $(".submit-btn").removeClass('primary-btn');
-                        $(".submit-btn").addClass('primary-btn-disabled');
-                    } else {
-                        $(".email-unique-error").addClass('d-none');
-                        $(".submit-btn").attr('disabled', false);
-                        $(".submit-btn").removeClass('primary-btn-disabled');
-                        $(".submit-btn").addClass('primary-btn');
-                        let phone = $(".form-phone").val();
-                        checkPhone(phone);
-                    }
-                });
-            }
-
-            function checkPhone(phone){
-
-                $.post("{{ route('check-phone') }}", {
-                    phone: phone,
-                    _token: "{{ csrf_token() }}"
-                }, function(data) {
-                    console.log(data);
-                    if (data.status == 'true') {
-                        $(".phone-unique-error").removeClass('d-none');
-                        $(".phone-unique-error").text(data.message);
-                        $(".submit-btn").attr('disabled', true);
-                        $(".submit-btn").removeClass('primary-btn');
-                        $(".submit-btn").addClass('primary-btn-disabled');
-                    } else {
-                        $(".phone-unique-error").addClass('d-none');
-                        $(".submit-btn").attr('disabled', false);
-                        $(".submit-btn").removeClass('primary-btn-disabled');
-                        $(".submit-btn").addClass('primary-btn');
-                        let email = $(".form-email").val();
-                        checkEmail(email);
-                    }
-                });
-            }
-
-            $(".form-phone").keyup(function() {
-                var phone = $(this).val();
-                checkPhone(phone);
-            });
-
+            
+            
 
         });
         
     </script>
+
+@endif
 </body>
 
 </html>

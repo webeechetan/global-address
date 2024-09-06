@@ -10,9 +10,17 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
     <h5 class="mb-0">Contact List</h5>
+    {{-- @if(session('success'))
+        <div class="alert alert-danger alert-dismissible show">{{ session('success') }}</div>
+    @endif --}}
+
     @if(session('success'))
-        <div class="alert alert-danger">{{ session('success') }}</div>
-    @endif
+    <div id="success-alert" class="alert alert-danger alert-dismissible show">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
     <div class="pull-right">
         <a href="{{ route('contacts.export') }}" class="btn btn-primary btn-sm">Export</a>
     </div>
@@ -64,10 +72,37 @@
 @endsection
 
 @push('scripts')
-    {{-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+
+ 
+        <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var successAlert = document.getElementById('success-alert');
+        if (successAlert) {
+            setTimeout(function() {
+                // Remove 'show' class and add 'fade' class to start fading out
+                successAlert.classList.remove('show');
+                successAlert.classList.add('fade');
+                
+                // Ensure the alert is fully hidden after the transition ends
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 150); // 150ms to wait until the transition ends
+            }, 5000); // 5 seconds
+        }
+    });
+
+    </script>
+
+
     <script>
         $(document).ready( function () {
-            $('#datatable').DataTable();
+            // $('#datatable').DataTable();
+
+            $('#datatable').DataTable({
+                "order": [[8, 'desc']]  // Adjust the index to match the column you want to sort by
+            });
         });
     </script>
 @endpush

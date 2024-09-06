@@ -31,7 +31,7 @@ Route::post('/contact',[ContactController::class,'store'])->name('contactUs');
 Route::post('/check-email',[ContactController::class,'checkEmail'])->name('check-email');
 Route::post('/check-phone',[ContactController::class,'checkPhone'])->name('check-phone');
 
-
+Route::get('/get-cities/{state}', [ContactController::class, 'getCities']);
 
 
 Route::get('/admin/login', [AuthController::class, 'index'])->name('admin.login');
