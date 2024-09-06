@@ -100,9 +100,21 @@
         $(document).ready( function () {
             // $('#datatable').DataTable();
 
+            // $('#datatable').DataTable({
+            //     "order": [[8, 'desc']]  // Adjust the index to match the column you want to sort by
+            // });
+
             $('#datatable').DataTable({
-                "order": [[8, 'desc']]  // Adjust the index to match the column you want to sort by
+                "order": [[8, 'desc']],  // Adjust the index to match the column you want to sort by
+                "columnDefs": [
+                    { 
+                        "targets": 8,   // Column index for 'created_at'
+                        "type": 'date'  // Use DataTables' built-in date sorting type
+                    }
+                ]
             });
+
+            
         });
     </script>
 @endpush
