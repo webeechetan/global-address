@@ -72,7 +72,7 @@
                         <h1 data-aos="fade-right" data-aos-duration="1500">THE SECRET TO <span>4x Investment Growth</span> </h1>
                         <p class="w-mob-280" data-aos="fade-right" data-aos-duration="2000">Discover Investment Opportunities in the Most Premier Projects with <span class="fw-bold">up to 16.2% ROI</span> </p>
                         
-                        <div data-aos="fade-right" data-aos-duration="2500"><a href="#main_form" class="primary-btn mt-3 mob-visible ">Download the Brochure</a></div>
+                        <div data-aos="fade-right" data-aos-duration="2500"><a href="#main_form" class="primary-btn mt-3 mob-visible ">Download Investment Guide</a></div>
 
                     </div>
                 </div>
